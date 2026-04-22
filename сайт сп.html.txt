@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Светлый Простор — ремонт и строительство (ДНР)</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" type="image/png" href="https://i.ibb.co/LXtb816F/logo.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      background-color: #ffffff;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Шапка */
+    header {
+      background: #ffffff;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 12px 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-img {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      object-fit: contain;
+      background: #fef5e7;
+      padding: 6px;
+    }
+
+    .logo i.fa-sun {
+      font-size: 36px;
+      color: #e67e22;
+      background: #fef5e7;
+      padding: 10px;
+      border-radius: 16px;
+      display: none;
+    }
+
+    .logo-text h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #1e2a3a;
+    }
+
+    .logo-text span {
+      font-size: 14px;
+      font-weight: 400;
+      color: #6c7a89;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .contact-header {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .phone-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .phone-header i {
+      font-size: 20px;
+      color: #e67e22;
+    }
+
+    .phone-header a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 20px;
+      color: #1e2a3a;
+      transition: color 0.2s;
+    }
+
+    .phone-header a:hover {
+      color: #e67e22;
+    }
+
+    .btn-outline {
+      border: 2px solid #e67e22;
+      background: transparent;
+      color: #e67e22;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      transition: 0.25s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover {
+      background: #e67e22;
+      color: white;
+    }
+
+    nav {
+      background: #f8fafc;
+      border-bottom: 1px solid #e9edf2;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      padding: 14px 0;
+      gap: 36px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #2c3e50;
+      font-size: 17px;
+      padding: 6px 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      border-bottom-color: #e67e22;
+      color: #e67e22;
+    }
+
+    .hero {
+      background: linear-gradient(103deg, #fdf8f2 0%, #fef9f0 100%);
+      padding: 70px 0 80px;
+    }
+
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero-content {
+      flex: 1 1 400px;
+    }
+
+    .hero-badge {
+      background: #e67e22;
+      color: white;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 15px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .hero-content h2 {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+
+    .hero-highlight {
+      color: #e67e22;
+    }
+
+    .hero-desc {
+      font-size: 18px;
+      color: #475569;
+      margin-bottom: 32px;
+      max-width: 550px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 35px;
+      margin: 30px 0 20px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-num {
+      font-size: 36px;
+      font-weight: 800;
+      color: #1e2a3a;
+    }
+
+    .stat-label {
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background: #e67e22;
+      color: white;
+      padding: 16px 40px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 18px;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 12px 24px -8px rgba(230, 126, 34, 0.3);
+      transition: all 0.25s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary i {
+      margin-left: 10px;
+    }
+
+    .btn-primary:hover {
+      background: #d35400;
+      box-shadow: 0 18px 30px -8px rgba(230, 126, 34, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .hero-image {
+      flex: 1 1 400px;
+      background: #d9cbb8;
+      border-radius: 40px 40px 40px 8px;
+      overflow: hidden;
+      box-shadow: 30px 30px 0 #f0e5d8;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+
+    .section-title h3 {
+      font-size: 38px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 15px;
+    }
+
+    .section-title p {
+      color: #64748b;
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .services {
+      padding: 90px 0;
+      background: #ffffff;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background: #fafcff;
+      border-radius: 28px;
+      padding: 35px 28px;
+      box-shadow: 0 20px 30px -8px rgba(0, 0, 0, 0.05);
+      border: 1px solid #f0f3f7;
+      transition: all 0.25s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 40px -12px rgba(230, 126, 34, 0.12);
+      border-color: #ffe0b3;
+    }
+
+    .service-icon {
+      width: 70px;
+      height: 70px;
+      background: #fef5e7;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .service-icon i {
+      font-size: 36px;
+      color: #e67e22;
+    }
+
+    .service-card h4 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #1e293b;
+    }
+
+    .service-card p {
+      color: #475569;
+    }
+
+    /* Секция "Ремонт мечты" */
+    .repair-details {
+      background: #f9fbfe;
+      padding: 80px 0;
+    }
+
+    .repair-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .repair-item {
+      flex: 1 1 300px;
+      background: white;
+      border-radius: 28px;
+      padding: 30px 28px;
+      box-shadow: 0 15px 25px -8px rgba(0,0,0,0.06);
+      border-left: 6px solid #e67e22;
+      transition: transform 0.2s;
+    }
+
+    .repair-item:hover {
+      transform: translateY(-6px);
+    }
+
+    .repair-item i {
+      font-size: 34px;
+      color: #e67e22;
+      margin-bottom: 18px;
+    }
+
+    .repair-item h4 {
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+
+    .repair-item ul {
+      list-style: none;
+    }
+
+    .repair-item li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #334155;
+    }
+
+    .repair-item li i {
+      font-size: 18px;
+      margin-top: 4px;
+      color: #e67e22;
+    }
+
+    .about {
+      padding: 80px 0;
+      background: #fbfdff;
+    }
+
+    .about-grid {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+
+    .about-text {
+      flex: 1 1 300px;
+    }
+
+    .about-text h3 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+
+    .about-text p {
+      margin-bottom: 24px;
+      color: #334155;
+      font-size: 17px;
+    }
+
+    .about-features {
+      list-style: none;
+    }
+
+    .about-features li {
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .about-features i {
+      color: #e67e22;
+      font-size: 20px;
+      width: 28px;
+    }
+
+    .about-image {
+      flex: 1 1 300px;
+      background: #e2d9cd;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: -20px 20px 0 #f1e8de;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .projects {
+      padding: 90px 0;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .project-card {
+      border-radius: 24px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.08);
+      transition: 0.2s;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-img {
+      height: 230px;
+      background-size: cover;
+      background-position: center;
+      background-color: #cbd5e1;
+    }
+
+    .project-info {
+      padding: 22px 20px 25px;
+    }
+
+    .project-info h4 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .project-tag {
+      color: #e67e22;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .contact {
+      padding: 80px 0;
+      background: #1e293b;
+      color: white;
+    }
+
+    .contact .section-title h3 {
+      color: white;
+    }
+
+    .contact .section-title p {
+      color: #cbd5e1;
+    }
+
+    .contact-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: white;
+      padding: 18px 36px;
+      border-radius: 60px;
+      font-size: 20px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.25s;
+      min-width: 260px;
+    }
+
+    .contact-btn img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      filter: brightness(0) invert(1); /* белая иконка на тёмном фоне */
+    }
+
+    .contact-btn i {
+      font-size: 28px;
+    }
+
+    .contact-btn:hover {
+      background: #e67e22;
+      border-color: #e67e22;
+      transform: translateY(-4px);
+      box-shadow: 0 20px 30px -8px rgba(0,0,0,0.3);
+    }
+
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 40px 0 30px;
+    }
+
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo i {
+      color: #e67e22;
+      margin-right: 6px;
+    }
+
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-social a {
+      color: #cbd5e1;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+
+    .footer-social img {
+      width: 22px;
+      height: 22px;
+      filter: brightness(0) invert(0.7);
+      transition: filter 0.2s;
+    }
+
+    .footer-social a:hover img {
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-copy {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 14px;
+      border-top: 1px solid #1e293b;
+      padding-top: 25px;
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+        text-align: center;
+      }
+      .contact-header {
+        justify-content: center;
+      }
+      .nav-links {
+        gap: 20px;
+      }
+      .hero-content h2 {
+        font-size: 38px;
+      }
+      .hero-stats {
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .contact-btn {
+        min-width: 220px;
+        padding: 16px 24px;
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <div class="logo">
+      <img class="logo-img" src="https://i.ibb.co/LXtb816F/logo.png" alt="Светлый Простор логотип" 
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <i class="fas fa-sun" style="display: none;"></i>
+      <div class="logo-text">
+        <h1>Светлый Простор</h1>
+        <span>ремонт и строительство в ДНР</span>
+      </div>
+    </div>
+    <div class="contact-header">
+      <div class="phone-header">
+        <i class="fas fa-phone-alt"></i>
+        <a href="tel:+79493927004">+7 (949) 392-70-04</a>
+      </div>
+      <a href="#contact" class="btn-outline"><i class="fas fa-calculator"></i> Заказать расчёт</a>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="container">
+    <ul class="nav-links">
+      <li><a href="#" class="active">Главная</a></li>
+      <li><a href="#repair">Ремонт</a></li>
+      <li><a href="#services">Строительство</a></li>
+      <li><a href="#about">О нас</a></li>
+      <li><a href="#projects">Проекты</a></li>
+      <li><a href="#contact">Контакты</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <span class="hero-badge">✨ Ремонт вашей мечты · ДНР</span>
+      <h2>Создаём <span class="hero-highlight">идеальное пространство</span> для жизни</h2>
+      <p class="hero-desc">Ремонт жилых помещений под ключ: от демонтажа до встроенной мебели. Строительство домов, отделка, инженерия. Работаем с душой и гарантией.</p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">500+</span>
+          <span class="stat-label">ремонтов</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">230+</span>
+          <span class="stat-label">домов</span>
+        </div>
+      </div>
+      <a href="#contact" class="btn-primary">Обсудить проект <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="hero-image">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='500' viewBox='0 0 600 500'%3E%3Crect width='600' height='500' fill='%23b89b7b'/%3E%3Crect x='60' y='220' width='480' height='280' fill='%23f5e6d3'/%3E%3Cpolygon points='60,220 300,80 540,220' fill='%23967a5c'/%3E%3Crect x='250' y='320' width='80' height='120' fill='%236b4f32'/%3E%3Crect x='90' y='280' width='100' height='80' fill='%23a5d8f3' opacity='0.8'/%3E%3Crect x='400' y='280' width='100' height='80' fill='%23a5d8f3' opacity='0.8'/%3E%3Ctext x='220' y='270' font-family='Arial' font-size='24' fill='white' font-weight='bold'%3EРЕМОНТ%3C/text%3E%3Ctext x='260' y='300' font-family='Arial' font-size='24' fill='white' font-weight='bold'%3EПОД КЛЮЧ%3C/text%3E%3C/svg%3E"
+           alt="Ремонт квартир от Светлый Простор">
+    </div>
+  </div>
+</section>
+
+<!-- Ремонт жилых помещений (подробно) -->
+<section id="repair" class="repair-details">
+  <div class="container">
+    <div class="section-title">
+      <h3>🌟 Ремонт вашей мечты — под ключ</h3>
+      <p>Полный цикл ремонта жилых помещений: от демонтажа до финальной уборки</p>
+    </div>
+    <div class="repair-grid">
+      <div class="repair-item">
+        <i class="fas fa-hammer"></i>
+        <h4>🔨 Демонтаж и подготовка</h4>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> Демонтаж старых конструкций</li>
+          <li><i class="fas fa-check-circle"></i> Вывоз мусора</li>
+          <li><i class="fas fa-check-circle"></i> Стяжка, штукатурка, шпаклёвка</li>
+        </ul>
+      </div>
+      <div class="repair-item">
+        <i class="fas fa-bolt"></i>
+        <h4>💡 Инженерные системы</h4>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> Замена электрики</li>
+          <li><i class="fas fa-check-circle"></i> Сантехника, отопление</li>
+          <li><i class="fas fa-check-circle"></i> Вентиляция и кондиционирование</li>
+        </ul>
+      </div>
+      <div class="repair-item">
+        <i class="fas fa-paint-bucket"></i>
+        <h4>🎨 Чистовая отделка</h4>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> Поклейка обоев, покраска</li>
+          <li><i class="fas fa-check-circle"></i> Укладка плитки, ламината, паркета</li>
+          <li><i class="fas fa-check-circle"></i> Натяжные потолки</li>
+        </ul>
+      </div>
+      <div class="repair-item">
+        <i class="fas fa-door-open"></i>
+        <h4>🚪 Завершающий этап</h4>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> Монтаж дверей, плинтусов</li>
+          <li><i class="fas fa-check-circle"></i> Установка розеток, выключателей</li>
+          <li><i class="fas fa-check-circle"></i> Встроенная мебель, декор</li>
+        </ul>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top: 40px; font-size: 18px; color: #475569;">
+      ✨ Создайте идеальное пространство для жизни вместе с нами!
+    </p>
+  </div>
+</section>
+
+<!-- Услуги строительства -->
+<section id="services" class="services">
+  <div class="container">
+    <div class="section-title">
+      <h3>Строительство домов и коттеджей</h3>
+      <p>Проектирование, возведение, отделка — всё в одних руках</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
+        <h4>Архитектурное проектирование</h4>
+        <p>Индивидуальные и типовые проекты с учётом вашего участка и бюджета.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
+        <h4>Строительство домов</h4>
+        <p>Кирпич, газобетон, каркас, клееный брус — любые материалы и технологии.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-paint-roller"></i></div>
+        <h4>Отделка «под ключ»</h4>
+        <p>Чистовая и черновая отделка, инженерные системы с гарантией.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-tree"></i></div>
+        <h4>Ландшафт и благоустройство</h4>
+        <p>Террасы, заборы, дорожки, озеленение — сделаем участок уютным.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- О компании -->
+<section id="about" class="about">
+  <div class="container about-grid">
+    <div class="about-text">
+      <h3>«Светлый Простор» — ремонт и стройка с душой</h3>
+      <p>Мы команда профессионалов с многолетним опытом. Контроль качества на каждом этапе, прозрачная смета и соблюдение сроков. Работаем официально по ДНР.</p>
+      <ul class="about-features">
+        <li><i class="fas fa-check-circle"></i> Договор, поэтапная оплата, фотоотчёты</li>
+        <li><i class="fas fa-check-circle"></i> Собственные бригады, без посредников</li>
+        <li><i class="fas fa-check-circle"></i> Помощь с материалами и логистикой</li>
+      </ul>
+      <a href="#contact" style="margin-top: 20px; display: inline-block;" class="btn-primary">Связаться с инженером</a>
+    </div>
+    <div class="about-image">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='400' viewBox='0 0 500 400'%3E%3Crect width='500' height='400' fill='%23b3a088'/%3E%3Crect x='80' y='180' width='340' height='220' fill='%23e7dacb'/%3E%3Cpolygon points='80,180 250,70 420,180' fill='%23947a5c'/%3E%3Crect x='200' y='260' width='70' height='100' fill='%235a422a'/%3E%3Ccircle cx='250' cy='130' r='25' fill='%23f9e076'/%3E%3Ctext x='170' y='300' font-family='Arial' font-size='26' fill='%23332'%3EСВЕТЛЫЙ%3C/text%3E%3C/svg%3E"
+           alt="Бригада Светлый Простор">
+    </div>
+  </div>
+</section>
+
+<!-- Проекты -->
+<section id="projects" class="projects">
+  <div class="container">
+    <div class="section-title">
+      <h3>Наши реализованные проекты</h3>
+      <p>Более 200 семей уже живут в обновлённых квартирах и домах</p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-img" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'200\' viewBox=\'0 0 300 200\'%3E%3Crect width=\'300\' height=\'200\' fill=\'%23a1b0c0\'/%3E%3Crect x=\'40\' y=\'80\' width=\'220\' height=\'120\' fill=\'%23dfd3c3\'/%3E%3Cpolygon points=\'40,80 150,30 260,80\' fill=\'%2385715e\'/%3E%3C/svg%3E');"></div>
+        <div class="project-info">
+          <div class="project-tag">Капремонт 3-к квартиры</div>
+          <h4>ЖК «Солнечный»</h4>
+          <p>ДНР, Горловка, 2025</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'200\' viewBox=\'0 0 300 200\'%3E%3Crect width=\'300\' height=\'200\' fill=\'%237a9e9f\'/%3E%3Crect x=\'30\' y=\'90\' width=\'240\' height=\'110\' fill=\'%23f2e2c9\'/%3E%3Cpolygon points=\'30,90 150,40 270,90\' fill=\'%235e6b5e\'/%3E%3C/svg%3E');"></div>
+        <div class="project-info">
+          <div class="project-tag">Таунхаус 130 м²</div>
+          <h4>«Речной квартал»</h4>
+          <p>ДНР, Макеевка, 2024</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'200\' viewBox=\'0 0 300 200\'%3E%3Crect width=\'300\' height=\'200\' fill=\'%2392846b\'/%3E%3Crect x=\'50\' y=\'70\' width=\'200\' height=\'130\' fill=\'%23dac5ad\'/%3E%3Cpolygon points=\'50,70 150,10 250,70\' fill=\'%235f4e3c\'/%3E%3C/svg%3E');"></div>
+        <div class="project-info">
+          <div class="project-tag">Евроремонт студии</div>
+          <h4>«Светлая долина»</h4>
+          <p>ДНР, Донецк, 2025</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Контакты (кнопки мессенджеров) -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="section-title">
+      <h3>Обсудим ваш ремонт или стройку</h3>
+      <p>Выберите удобный способ — ответим за 15 минут</p>
+    </div>
+    <div class="contact-buttons">
+      <!-- кнопка Макс с иконкой SVG -->
+      <a href="https://max.ru/u/f9LHodD0cOKA3lxbOQmLnXd6Ooq25lS_0S3Brx-DAyqtb6_zF4c9H8OWNYw" target="_blank" class="contact-btn">
+        <img src="https://zaplata.ru/wp-content/uploads/icon/max/Max_logo.svg" alt="Макс" style="width:28px; height:28px;">
+        Обсудить в Макс
+      </a>
+      <a href="https://t.me/Mihail_661" target="_blank" class="contact-btn">
+        <i class="fab fa-telegram"></i> Обсудить в Телеграм
+      </a>
+      <a href="https://vk.ru/skill177" target="_blank" class="contact-btn">
+        <i class="fab fa-vk"></i> Обсудить в ВК
+      </a>
+    </div>
+    <p style="text-align:center; margin-top: 40px; color: #cbd5e1;">
+      📞 <a href="tel:+79493927004" style="color:white; font-weight:600;">+7 (949) 392-70-04</a> · 
+      📧 <a href="mailto:spgorlovka@gmail.com" style="color:white;">spgorlovka@gmail.com</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-logo">
+        <i class="fas fa-sun"></i> <strong>Светлый Простор</strong> © 2026
+      </div>
+      <div>
+        <i class="fas fa-map-pin"></i> ДНР, г. Горловка, ул. Строителей, 15
+      </div>
+      <div>
+        <i class="fas fa-envelope"></i> spgorlovka@gmail.com
+      </div>
+      <div class="footer-social">
+        <a href="https://vk.ru/skill177" target="_blank"><i class="fab fa-vk"></i> ВК</a>
+        <a href="https://t.me/Mihail_661" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+        <a href="https://max.ru/u/f9LHodD0cOKA3lxbOQmLnXd6Ooq25lS_0S3Brx-DAyqtb6_zF4c9H8OWNYw" target="_blank">
+          <img src="https://zaplata.ru/wp-content/uploads/icon/max/Max_logo.svg" alt="Макс" style="width:22px; height:22px;"> Макс
+        </a>
+      </div>
+    </div>
+    <div class="footer-copy">
+      Политика конфиденциальности | «Светлый Простор» — ремонт и строительство с душой в ДНР.
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === "#" || href === "") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
+</body>
+</html>
